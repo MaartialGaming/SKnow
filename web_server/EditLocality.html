@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<title>s(K)now Cannon - Reserved Area</title>
+
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="css/owl.carousel.css">
+	<link rel="stylesheet" href="css/owl.theme.default.min.css">
+	<link rel="stylesheet" href="css/magnific-popup.css">
+
+	<!-- FAVOURITE ICON -->
+	<link rel="icon" type="image/png" href="images/SK_logo.png">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css">
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+
+	<!--FONT-->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+	<!--MATERIAL ICON-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+	<!--LO POSSO ANCHE RIMUOVERE MA PER ADESSO LASCIO COSI-->
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+	<link rel="stylesheet" href="css/dashboard_style.css">
+
+</head>
+
+<body>
+
+	<!-- PRE LOADER -->
+	<section class="preloader">
+		<div class="spinner">
+
+			<span class="spinner-rotate"></span>
+
+		</div>
+	</section>
+
+
+	<!-- MENU -->
+	<section id="testa" class="navbar custom-navbar navbar-fixed-top" role="navigation">
+		<div class="container">
+
+			<div class="navbar-header">
+				<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon icon-bar"></span>
+					<span class="icon icon-bar"></span>
+					<span class="icon icon-bar"></span>
+				</button>
+
+				<!-- lOGO TEXT HERE -->
+				<a href="#testa" class="navbar-brand">S(K)now Cannons - Personal Area</a>
+			</div>
+
+			<!-- MENU LINKS -->
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav navbar-nav-first">
+					<li><a href="#tempo-reale" class="smoothScroll">Real Time</a></li>
+					<li><a href="#hist_section" class="smoothScroll">Historical Data</a></li>
+					
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<span style="padding-top: 10px;" class="material-symbols-outlined user-icon"
+						onclick="openUserCard()">account_circle</span>
+					<div class="user-card">
+						<div class="user-card-content">
+							<p class="menu-tendina-utente" onclick="logout()"
+								style="text-align: center; font-weight: 800;">Logout</p>
+						</div>
+					</div>
+
+				</ul>
+			</div>
+
+		</div>
+	</section>
+
+
+	<!-- HOME -->
+	<section id="home" class="slider" data-stellar-background-ratio="0.5">
+		<div class="row">
+
+			<div class="owl-carousel owl-theme">
+				<div class="item item-first">
+					<div class="caption">
+						<div class="container">
+							<div class="col-md-8 col-sm-12">
+								<h3>Personal Area</h3>
+								<h1>Welcome in your management console</h1>
+								<!--AGGIORNARE CON jquery-->
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="item item-second-dashboard">
+					<div class="caption">
+						<div class="container">
+							<div class="col-md-8 col-sm-12">
+								<h3>DASHBOARD</h3>
+								<h1>Real Time measurements & Network Configuration</h1>
+								<!--AGGIORNARE CON jquery-->
+								<h1 class="welcome_user"> All in one!</h1>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+
+	</section>
+
+	
+
+
+	<section id="kits" class="border-bottom" data-stellar-background-ratio="0.5">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-sm-12">
+					<div class="section-title wow fadeInUp" data-wow-delay="0.1s">
+						<div>
+							<h2 id="welcome_name" style="margin-bottom: 20px;">Hello!</h2>
+							<div class="linea"></div>
+
+						</div>
+						
+
+						<h2>Select what you want to vizualize</h2>
+
+						<h4>Locality - Slope - Sector</h4>
+						
+						
+					</div>
+					
+				</div>
+			</div>
+			
+			<div class="row" id="selection">
+				<div class="col-md-4 col-sm-4">
+					
+					<div class="col-md-12 col-sm-12" id="localities_list_container" style="background-color: #f7f7f7;">
+
+					</div>
+					<div class=" col-md-12 col-sm-12">
+						<div style="display: flex; justify-content: center;">
+							<div style="text-align: center;">
+								<h3 id="locality_selected" style="margin-bottom: 10px;">No Locality Selected</h3>
+								<h3 id="id_locality" style="display: none;">NONE</h3>
+								<h3 id="codice_locality" style="display: none;">NONE</h3>
+							</div>
+						</div>
+					</div>
+					<button type="button" class="submit-button" onclick="showPopup_new_locality()" >Add locality</button>
+					<button type="button" class="submit-button" onclick="delete_locality()" >Delete locality</button>
+
+					<div id="popup" class="popup_dade">
+						<div class="box">
+							<h2 id="popup_title">This is a Popup</h2>
+							<input type="text" id="new_locality_name" name="locality name" placeholder="Locality Name" required>
+							<h4 id="status_add_locality"  class="nascondi">Locality successfully added</h4>
+							
+							<div class="submit-button" id="confirm_add_locality" onclick="add_locality()">Confirm</div>
+							<button type="button" class="submit-button" onclick="hidePopup_new_locality()">Close</button>
+						</div>
+					</div>
+
+				</div>
+				<div class="col-md-4 col-sm-4">									
+						<div id="da_nascondere" class="nascondi">
+						
+							<div class="col-md-12 col-sm-12" id="slopes_list_container" style="background-color: #f7f7f7;">
+								
+							</div>
+						
+							<div class="col-md-12 col-sm-12">
+								<div id="tempo-reale" class="row wow fadeInUp">
+									<div style="text-align: center;">
+										<h3 id="slope_selected" style="margin-bottom: 40px;">Seleziona Pista</h3>
+										<h3 id="id_slope" style="display: none;">NONE</h3>
+										<h3 id="codice_slope" style="display: none;">NONE</h3>
+										
+	
+										
+									</div>
+								</div>
+								
+							</div>
+							<!--<div id="div_bottone_add_slope">
+								<ul class="nav navbar-nav navbar-right">
+							
+									<div class="submit-button" onclick="show_add_slope()">Add Slope'</div>
+								</ul>
+								<div id="nascondere_add_slope" class="nascondi">
+									<input type="text" id="new_slope_name" name="slope name" placeholder="Slope Name" required>
+									<div class="submit-button" onclick='add_slope()'>Conferma</div>
+								</div>
+
+							</div>-->
+							<button type="button" class="submit-button" onclick="showPopup_new_slope()" >Add slope</button>
+							<button type="button" class="submit-button" onclick="delete_slope()" >Delete slope</button>
+
+							<div id="popup2" class="popup_dade">
+								<div class="box">
+									<h2 id="popup_title2">This is a Popup</h2>
+									<input type="text" id="new_slope_name" name="slope name" placeholder="Slope Name" required>
+									<h4 id="status_add_slope"  class="nascondi">Slope successfully added</h4>
+									
+									<div class="submit-button" id="confirm_add_slope" onclick="add_slope()">Confirm</div>
+									<button type="button" class="submit-button" onclick="hidePopup_new_slope()">Close</button>
+								</div>
+							</div>
+						
+						</div>
+				</div>
+				<div class="col-md-4 col-sm-4">
+					<div id="da_nascondere2" class="nascondi">
+						<div class="col-md-12 col-sm-12" id="sectors_list_container" style="background-color: #f7f7f7;">
+					
+						</div>
+						<div class="col-md-12 col-sm-12">
+							<div id="da_nascondere3" class="nascondi">
+								<div id="tempo-reale" class="row wow fadeInUp">
+									<div style="text-align: center;">
+										<h3 id="titolo_sector_selected" style="margin-bottom: 40px;">Nessun sector selezionato</h3>
+										<h3 id="id_sector" style="display: none;">NONE</h3>
+										<h3 id="codice_sector" style="display: none;">NONE</h3>
+									</div>
+								</div>
+							</div>
+						</div>
+						<button type="button" class="submit-button" onclick="showPopup_new_sector()" >Add sector</button>
+						<button type="button" class="submit-button" onclick="delete_sector()" >Delete sector</button>
+
+							<div id="popup3" class="popup_dade">
+								<div class="box">
+									<h2 id="popup_title3">This is a Popup</h2>
+									<input type="text" id="new_sector_name" name="sector name" placeholder="Sector Name" required>
+									<h4 id="status_add_sector"  class="nascondi">Sector successfully added</h4>
+									
+									<div class="submit-button" id="confirm_add_sector" onclick="add_sector()">Conferma</div>
+									<button type="button" class="submit-button" onclick="hidePopup_new_sector()">Close</button>
+								</div>
+							</div>
+					
+			
+					</div>
+					
+
+				</div>
+				<div class="col-md-1"></div>
+				
+			</div>
+				
+			
+		</div>
+	</section>
+
+
+	<div id="dashboard" class="container">
+		<div class="linea"></div>
+		<div class="row">
+
+			<div style="display: flex; justify-content: center;">
+				<div style="text-align: center; margin-bottom: 50px;">
+					<h3 id="overall_id_to_vis">Select all the fields above to proceed</h3>
+				
+				</div>
+			</div>
+
+		</div>
+
+
+		<div id="dashboard_generale" class="container nascondi">
+			<!--INSERIRE QUI I GRAFICI-->
+		<div class="row">
+			<h3>REAL TIME </h3>
+
+			<h4>Last value measured for the sector selected</h4>
+			<div class="main-title" style="margin-top: 10px;">
+				<button type="button" class="update-button" onclick="updateCards()">Update</button>
+			</div>
+			<div class="col-md-4 col-sm-6">
+				<div id="rt_snow_depth" class="card card-acceptable"  style="margin-top: 50px;">
+					<div class="card-inner">
+						<h4>SNOWDEPTH</h4> <!--PRIMA ASHRAE-->
+						<span class="material-symbols-outlined">
+							ac_unit
+							</span>
+					</div>
+					<h3 id="rt_snow_depth_val" > NO DATA </h3>
+				</div>
+
+			</div>
+			<div class="col-md-4 col-sm-6">
+				<div id="rt_temperature" class="card card-acceptable"  style="margin-top: 50px;">
+					<div class="card-inner">
+						<h4>TEMPERATURE</h4> <!--PRIMA ASHRAE-->
+						<span class="material-symbols-outlined">thermostat_auto</span>
+					</div>
+					<h3 id="rt_temperature_val" > NO DATA</h3>
+				</div>
+
+			</div>
+			<div class="col-md-4 col-sm-6">
+				<div id="rt_humidity" class="card card-acceptable" style="margin-top: 50px;">
+					<div class="card-inner">
+						<h4>HUMIDITY </h4> <!--PRIMA ASHRAE-->
+						<span class="material-symbols-outlined">
+							humidity_percentage
+							</span>
+					</div>
+					<h3 id="rt_humidity_val" > NO DATA</h3>
+				</div>
+
+			</div>
+		</div>
+
+
+		<div id="hist_section" class="row" style="margin-top: 50px;">
+			<h3>HYSTORICAL DATA & WEATHER</h3>
+
+			<h4>Time series of magnitude collected</h4>
+			<div class="main-title" style="margin-top: 10px;">
+				<button type="button" class="update-button" onclick="renderGraphByFilter(12)">Update</button>
+			</div>
+			<div class="main-title" style="margin-top: 10px;">
+				<ul class="nav navbar-nav">
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Filters<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a  href="#acustico" onClick='renderGraphByFilter(12)'>Last 12h  (Default)</a></li>
+							<li><a  href="#acustico" onClick="renderGraphByFilter(24)">Last 24h</a></li>
+							<li><a  href="#acustico" onClick='renderGraphByFilter(72)'>Last 72h</a></li>
+							<li><a  href="#acustico" onClick='renderGraphByFilter(168)'>Last Week</a></li>
+							
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<div class="col-md-6 col-sm-12" style="margin-top: 50px;">
+
+					<div class="charts-card">
+					  <div id="graph-sd-landing"></div>
+					</div>
+				
+			</div>
+			<div class="col-md-6 col-sm-12" style="margin-top: 50px;">
+					<div class="charts-card">
+						 <div id="graph-temp-landing"></div>
+					</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6 col-sm-12" style="margin-top: 50px;">
+
+					<div class="charts-card">
+					  <div id="graph-hum-landing"></div>
+					</div>
+				
+			</div>
+			<div class="col-md-6 col-sm-12" style="margin-top: 50px;">
+					<div class="charts-card">
+						<iframe width="500" height="315" src="https://www.youtube.com/embed/Y1qp-EVF_oU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+					</div>
+			</div>
+		</div>
+			
+		</div>
+		
+
+	</div>
+
+
+	<!--CDN LIBRERIA PER GRAFICI-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.37.0/apexcharts.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+	<!--CUSTOM JS PER LA PAGINA MIA-->
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.stellar.min.js"></script>
+	<script src="js/wow.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/smoothscroll.js"></script>
+	<script src="js/custom.js"></script>
+	
+	<script>
+		function openUserCard() {
+			const userCard = document.querySelector('.user-card');
+			userCard.style.display = userCard.style.display === 'block' ? 'none' : 'block';
+
+		}
+
+
+
+	</script>
+
+	<script>
+		$(document).ready(function() {
+    //$(function(){
+    //devo prendere tutti cannoni dal catalogo
+
+    // TODO per guardare alla sessione 
+    $.ajax(
+        {
+        url: '/loggedUser', //QUI NON CI VA USER ID -> mettilo lato server gettando i cookies
+        method: 'GET',
+        contentType: "application/json",
+        dataType: "json",
+        success: function(risposta){	
+        updateTitle(risposta.username);
+        },
+        }
+    );
+    console.log("sono dentro");
+    get_list_localities();
+    
+		});
+	</script>
+
+
+	<script src="js/aggiornamento_dinamico_sknowcannon/update_sknowcannon.js"></script>
+	<script src="js/aggiornamento_dinamico_sknowcannon/update_tendina_localities.js"></script>
+	<script src="js/aggiornamento_dinamico_sknowcannon/update_tendina_slopes.js"></script>
+	<script src="js/aggiornamento_dinamico_sknowcannon/update_tendina_sectors.js"></script>
+
+	<script src="js/aggiornamento_dinamico_sknowcannon/grafici_sk/humidity_history.js"></script>
+	<script src="js/aggiornamento_dinamico_sknowcannon/grafici_sk/snowdepth_history.js"></script>
+	<script src="js/aggiornamento_dinamico_sknowcannon/grafici_sk/temperature_history.js"></script>
+
+</body>
+
+</html>

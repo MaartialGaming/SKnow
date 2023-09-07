@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>s(K)now Cannon - Login</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Form di login</title>
+    <link rel="stylesheet" href="css/login_style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"> <!--LO POSSO ANCHE RIMUOVERE MA PER ADESSO LASCIO COSI-->
+    
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+	<link rel="icon" type="image/png" href="images/SK_logo.png">
+
+</head>
+
+<body style=" background-image: url('images/background_home_1.jpg')">
+	<div class="container">
+		<div class="box">
+			
+			<h3 style="text-align: center;">Reserved Area</h3>
+			<h3 style="text-align: center; margin-bottom: 30px;">Login</h3>
+			<form>
+				<div class="input-icon">
+					<span class="material-symbols-outlined">lock</span>
+					<input type="password" id="password" name="password" placeholder="Token" required>
+				</div>
+				<div class="submit-button" onclick="func_accedi()">Login</div>
+                <div class="submit-button" onclick="backToHome()">Back</div>
+			</form>
+		</div>
+	</div>
+	
+</body>
+
+
+<!--CUSTOM JS PER LA PAGINA MIA-->
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.stellar.min.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/smoothscroll.js"></script>
+<script src="js/custom.js"></script>
+
+
+<script>
+
+	function func_accedi() {
+            event.preventDefault();
+            password=document.getElementById('password').value
+            console.log("pass: "+password)
+            $.ajax({
+                type: "POST",
+                url: "/login",
+                contentType: "application/json",
+                data: JSON.stringify({
+                   password : password,
+                }),
+                dataType: "json",
+                success: function (risposta) {
+                    makeAlert(risposta);
+                }
+            });
+            }
+
+            function makeAlert(output){
+                console.log("sono entrato nell'if")
+                console.log(output)
+                if(output.verified=='false'){
+                    
+                    alert("Invalid token")
+                }
+                else{
+                    window.location.href = "/areaPersonale";
+            }
+        }
+                    
+	
+	function backToHome (){
+		window.location.href = "/";
+	}
+	
+</script>
+
+</html>
