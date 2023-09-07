@@ -1,0 +1,129 @@
+version: '3'
+
+services:
+  service_catalog:
+    container_name: service_catalog
+    build:
+      context: ./service_catalog
+    volumes:
+      - shared-data:/shared
+    restart: always
+    networks:
+      - SKnow
+
+  resource_catalog:
+    container_name: resource_catalog
+    build:
+      context: ./resource_catalog
+    volumes:
+      - shared-data:/shared
+    restart: always
+    depends_on:
+      - service_catalog
+    networks:
+      - SKnow
+
+  login:
+    container_name: login
+    build:
+      context: ./login
+    ports:
+      - "8083:8083"
+    volumes:
+      - shared-data:/shared
+    restart: always
+    depends_on:
+      - service_catalog
+      - resource_catalog
+    networks:
+      - SKnow
+
+  telegram_bot:
+    container_name: telegram_bot
+    build:
+      context: ./telegram_bot
+    volumes:
+      - shared-data:/shared
+    restart: always
+    depends_on:
+      - service_catalog
+      - resource_catalog
+    networks:
+      - SKnow
+
+  web_server:
+    container_name: web_server
+    build:
+      context: ./web_server
+    ports:
+      - "8080:8080"
+    volumes:
+      - shared-data:/shared
+    restart: always
+    depends_on:
+      - service_catalog
+      - resource_catalog
+    networks:
+      - SKnow
+
+  data_manager:
+    container_name: data_manager
+    build:
+      context: ./data_manager
+    volumes:
+      - shared-data:/shared
+    restart: always
+    depends_on:
+      - service_catalog
+    networks:
+      - SKnow
+
+  thingspeak_connector:
+    container_name: thingspeak_connector
+    build:
+      context: ./thingspeak_connector
+    volumes:
+      - shared-data:/shared
+    restart: always
+    depends_on:
+      - service_catalog
+    networks:
+      - SKnow
+
+  automatic_power_on_control:
+    container_name: automatic_power_on_control
+    build:
+      context: ./automatic_power_on_control
+    volumes:
+      - shared-data:/shared
+    restart: always
+    depends_on:
+      - service_catalog
+      - resource_catalog
+    networks:
+      - SKnow
+
+  water_level_control:
+    container_name: water_level_control
+    build:
+      context: ./water_level_control
+    volumes:
+      - shared-data:/shared
+    restart: always
+    depends_on:
+      - service_catalog
+      - resource_catalog
+    networks:
+      - SKnow
+
+volumes:
+  shared-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: shared
+
+networks:
+  SKnow:
+    name: SKnow

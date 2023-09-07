@@ -1,0 +1,122 @@
+version: '3'
+
+services:
+  sensor_device_connector_01:
+    container_name: sensor_device_connector_01
+    build:
+      context: ./sensor_device_connector
+    volumes:
+      - shared-data:/shared
+    restart: always
+    environment:
+      id: Sensor01
+      user: USER_804213822b8240d8801d9f554d9b2855
+      locality: Bardonecchia
+      slope: SlopeA
+      sector: SectorX
+      cannon: null
+      type: snow_depth
+      unit: mm
+    networks:
+      - SKnow
+
+  sensor_device_connector_02:
+    container_name: sensor_device_connector_02
+    build:
+      context: ./sensor_device_connector
+    volumes:
+      - shared-data:/shared
+    restart: always
+    environment:
+      id: Sensor02
+      user: USER_804213822b8240d8801d9f554d9b2855
+      locality: Bardonecchia
+      slope: SlopeA
+      sector: SectorX
+      cannon: null
+      type: temperature
+      unit: °C
+    networks:
+      - SKnow
+
+  sensor_device_connector_03:
+    container_name: sensor_device_connector_03
+    build:
+      context: ./sensor_device_connector
+    volumes:
+      - shared-data:/shared
+    restart: always
+    environment:
+      id: Sensor03
+      user: USER_804213822b8240d8801d9f554d9b2855
+      locality: Bardonecchia
+      slope: SlopeA
+      sector: SectorX
+      cannon: null
+      type: humidity
+      unit: '%'
+    networks:
+      - SKnow
+
+  sensor_device_connector_04:
+    container_name: sensor_device_connector_04
+    build:
+      context: ./sensor_device_connector
+    volumes:
+      - shared-data:/shared
+    restart: always
+    environment:
+      id: Sensor04
+      user: USER_804213822b8240d8801d9f554d9b2855
+      locality: Bardonecchia
+      slope: SlopeA
+      sector: SectorX
+      cannon: SnowCannon01
+      type: water_level
+      unit: '%'
+    networks:
+      - SKnow
+
+  snow_cannon_device_connector_01:
+    container_name: snow_cannon_device_connector_01
+    build:
+      context: ./snow_cannon_device_connector
+    volumes:
+      - shared-data:/shared
+    restart: always
+    environment:
+      id: SnowCannon01
+      user: USER_804213822b8240d8801d9f554d9b2855
+      locality: Bardonecchia
+      slope: SlopeA
+      sector: SectorX
+    networks:
+      - SKnow
+
+  snow_cannon_device_connector_02:
+    container_name: snow_cannon_device_connector_02
+    build:
+      context: ./snow_cannon_device_connector
+    volumes:
+      - shared-data:/shared
+    restart: always
+    environment:
+      id: SnowCannon02
+      user: USER_804213822b8240d8801d9f554d9b2855
+      locality: Bardonecchia
+      slope: SlopeA
+      sector: SectorX
+    networks:
+      - SKnow
+
+volumes:
+  shared-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: shared
+
+networks:
+  SKnow:
+    external: true
