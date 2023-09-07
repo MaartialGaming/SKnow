@@ -1,0 +1,7 @@
+{
+    "id": "ThingspeakConnector",
+    "uri": "TC",
+    "address": "thingspeak_connector",
+    "port": 8084,
+    "user_key": ""
+}

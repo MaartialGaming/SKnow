@@ -1,0 +1,8 @@
+{
+    "id": "ResourceCatalog",
+    "uri": "RC",
+    "address": "resource_catalog",
+    "port": 8082,
+    "resources_map": "__resources_map.json",
+    "resources_folder": "__resources"
+}

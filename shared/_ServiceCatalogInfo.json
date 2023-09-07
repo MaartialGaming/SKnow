@@ -1,0 +1,5 @@
+{
+    "service_catalog_address": "service_catalog",
+    "service_catalog_port": 8081,
+    "service_catalog_uri": "SC"
+}

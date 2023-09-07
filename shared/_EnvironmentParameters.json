@@ -1,0 +1,5 @@
+{
+    "ping_timedelta": 600,
+    "automations_timedelta": 60,
+    "measurements_timedelta": 60
+}

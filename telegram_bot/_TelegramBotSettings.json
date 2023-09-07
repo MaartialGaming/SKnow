@@ -1,0 +1,8 @@
+{
+    "id": "TelegramBot",
+    "broker": "test.mosquitto.org",
+    "port": 1883,
+    "base_topic": "SKnow",
+    "telegram_bot_auth": "__telegram_bot_auth.json",
+    "token": ""
+}

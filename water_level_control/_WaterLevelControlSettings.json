@@ -1,0 +1,6 @@
+{
+    "id": "WaterLevelControl",
+    "broker": "test.mosquitto.org",
+    "port": 1883,
+    "base_topic": "SKnow"
+}
