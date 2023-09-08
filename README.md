@@ -124,7 +124,7 @@ STEP 5 - REGISTER ADDITIONAL USERS
 
 
 
-STEP 5 - SHUT DOWN
+STEP 6 - SHUT DOWN
 
 - in order to shut down the network, run the following commands:
     - to remove sensors and cannons:
