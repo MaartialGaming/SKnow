@@ -12,15 +12,9 @@ STEP 2 - STARTUP
 
 - open a terminal and navigate to the extracted folder (the folder containing this file), then run the following set of commands:
     - to build the Docker images:
-```
-        docker-compose -f docker-compose-structure.yml build
-```
-```txt
+        `docker-compose -f docker-compose-structure.yml build`
     - to create and run the Docker volumes and containers concerning SKnow main structure (all the microservices):
-```
-```
-        docker-compose -f docker-compose-structure.yml up -d
-```
+        `docker-compose -f docker-compose-structure.yml up -d`
 
 
 
@@ -28,13 +22,9 @@ STEP 3 - PERSONALIZATION
 
 - in the same terminal you can run the following command in order to run users' sensors and cannons:
     - to build the Docker images:
-```
-        docker-compose -f docker-compose-sensors-cannons.yml build
-```
+        `docker-compose -f docker-compose-sensors-cannons.yml build`
     - to create and run the containers:
-```
-        docker-compose -f docker-compose-sensors-cannons.yml up -d
-```
+        `docker-compose -f docker-compose-sensors-cannons.yml up -d`
 
 - the sensors and cannons that are now running in the system are just a sample set to demonstrate the basic funcionalities. In order to properly use them in the network, go to STEP 4 and use the SKnow website to create a location called "Bardonecchia", with a slope called "SlopeA" that has a sector called "SectorX".
 
@@ -138,10 +128,6 @@ STEP 6 - SHUT DOWN
 
 - in order to shut down the network, run the following commands:
     - to remove sensors and cannons:
-```
-        docker-compose -f docker-compose-sensors-cannons.yml down
-```
+        `docker-compose -f docker-compose-sensors-cannons.yml down`
     - to then shut down the whole SKnow service:
-```
-        docker-compose -f docker-compose-structure.yml down
-```
+        `docker-compose -f docker-compose-structure.yml down`
