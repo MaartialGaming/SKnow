@@ -15,7 +15,7 @@ STEP 2 - STARTUP
 ```
         docker-compose -f docker-compose-structure.yml build
 ```
-&nbsp    - to create and run the Docker volumes and containers concerning SKnow main structure (all the microservices):
+\t- to create and run the Docker volumes and containers concerning SKnow main structure (all the microservices):
 ```
         docker-compose -f docker-compose-structure.yml up -d
 ```
