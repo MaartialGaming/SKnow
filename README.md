@@ -30,6 +30,7 @@ STEP 3 - PERSONALIZATION
 
 - in order to customize the set of sensors and cannons that join the network, you can modify the sample set (modify the docker-compose-sensors-cannons.yml file contained in the same folder of this file) or add other groups of devices (create a new configuration file). Either way, this must be the basic backbone of the .yml file:
 
+```
     version: '3'
 
     services:
@@ -47,11 +48,13 @@ STEP 3 - PERSONALIZATION
     networks:
         SKnow:
             external: true
+```
 
 - you must substitute the '...' with one or more definitions of a cannon or sensor.
 
 - for a cannon, this is the syntax:
 
+```
         <CONTAINER NAME>:
             container_name: <CONTAINER NAME>
             build:
@@ -67,9 +70,11 @@ STEP 3 - PERSONALIZATION
                 sector: <SECTOR>
             networks:
                 - SKnow
+  ```
 
 - for a sensor, this is the syntax:
 
+```
         <CONTAINER NAME>:
             container_name: <CONTAINER NAME>
             build:
@@ -88,6 +93,7 @@ STEP 3 - PERSONALIZATION
                 unit: <MEASUREMENT UNIT>
             networks:
             -    SKnow
+  ```
 
 - you must subtitute the text contained in <> accordingly:
     - for both of them:
